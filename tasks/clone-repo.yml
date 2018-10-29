@@ -1,0 +1,8 @@
+---
+- name: download repo to ~/Development/
+  become: yes
+  become_user: "{{ user }}"
+  git:
+    repo: "{{ docker_dev_repo }}"
+    dest: ~/Development/docker/compose/docker-dev
+  when: user is defined

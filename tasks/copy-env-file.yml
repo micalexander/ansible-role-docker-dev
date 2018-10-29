@@ -1,0 +1,32 @@
+- name: copy env file over
+  become: yes
+  become_user: "{{ user }}"
+  copy:
+    src: "{{ role_path }}/files/.env"
+    dest: ~/Development/docker/compose/docker-dev
+  when: user is defined
+- name: find and replace user in file with "{{ user }}"
+  become: yes
+  become_user: "{{ user }}"
+  replace:
+    path: ~/Development/docker/compose/docker-dev/.env
+    regexp: 'yourusername'
+    replace: "{{ user }}"
+  when: user is defined
+- name: find and replace root passsword with randomly generated mysql root password with "{{ mysql_root_password }}"
+  become: yes
+  become_user: "{{ user }}"
+  replace:
+    path: ~/Development/docker/compose/docker-dev/.env
+    regexp: 'somerootpassword'
+    replace: "{{ mysql_root_password }}"
+  when: user is defined
+- name: find and replace user passsword with generated mysql user password with "{{ mysql_password }}"
+  become: yes
+  become_user: "{{ user }}"
+  replace:
+    path: ~/Development/docker/compose/docker-dev/.env
+    regexp: 'someuserpassword'
+    replace: "{{ mysql_password }}"
+  when: user is defined
+

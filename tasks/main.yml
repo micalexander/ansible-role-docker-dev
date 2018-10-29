@@ -1,0 +1,5 @@
+---
+# tasks file for docker-dev
+- import_tasks: clone-repo.yml
+- import_tasks: copy-env-file.yml
+- import_tasks: add-user-to-docker-group.yml
