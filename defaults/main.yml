@@ -1,5 +1,5 @@
 ---
 # defaults file for docker-dev
 docker_dev_repo: https://github.com/micalexander/docker-dev.git
-mysql_root_password: "{{ lookup('password', 'chars=ascii_letters') }}"
-mysql_password: "{{ lookup('password', 'chars=ascii_letters') }}"
+mysql_root_password: "{{ lookup('password', '/dev/null chars=ascii_letters') }}"
+mysql_password: "{{ lookup('password', '/dev/null chars=ascii_letters') }}"
